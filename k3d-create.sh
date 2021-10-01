@@ -9,6 +9,7 @@ fi
 
 k3d cluster create "$1" \
     --api-port 6443 \
+    --port '8080:80@loadbalancer' \
     --agents 3 \
     --servers 1
 
