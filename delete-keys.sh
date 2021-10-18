@@ -53,6 +53,7 @@ do
             -H "$VERSION_HEADER" \
             -w '%{http_code}' \
             https://api.github.com/repos/$REPO/keys/$KEY
+        echo " "
     done
 done
 
