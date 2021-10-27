@@ -11,6 +11,21 @@ then
     exit 1
 fi
 
+unset DOIT
+while getopts 'y' o
+do
+    case "$o" in
+        y)
+            DOIT='y'
+            ;;
+        *)
+            echo "Unknown option $o"
+            exit 1
+            ;;
+    esac
+done
+shift $(expr $OPTIND - 1)
+
 if [ -z "$1" ]
 then
     echo "GitHub repo names required as args"
@@ -24,13 +39,16 @@ do
 done
 
 echo " "
-/bin/echo -n "Delete all deployment keys from these repos? <y/n> "
-read ANS
-
-if [ "$ANS" != "y" ]
+if [ -z "$DOIT" ]
 then
-    echo "Bye"
-    exit
+    /bin/echo -n "Delete all deployment keys from these repos? <y/n> "
+    read ANS
+
+    if [ "$ANS" != "y" ]
+    then
+        echo "Bye"
+        exit
+    fi
 fi
 
 AUTH_HEADER="Authorization: token $GITHUB_TOKEN"
