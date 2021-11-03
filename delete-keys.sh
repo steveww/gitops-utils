@@ -26,6 +26,7 @@ do
 done
 shift $(expr $OPTIND - 1)
 
+clear
 if [ -z "$1" ]
 then
     echo "Using default repos"
@@ -34,7 +35,6 @@ else
     REPOS="$*"
 fi
 
-clear
 for REPO in $REPOS
 do
     echo "$REPO"
@@ -56,7 +56,7 @@ fi
 AUTH_HEADER="Authorization: token $GITHUB_TOKEN"
 VERSION_HEADER="Accept: application/vnd.github.v3+json"
 
-for REPO in $*
+for REPO in $REPOS
 do
     # Get all deploy keys for REPO
     for KEY in $(curl \
