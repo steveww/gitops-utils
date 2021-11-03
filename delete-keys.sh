@@ -28,12 +28,14 @@ shift $(expr $OPTIND - 1)
 
 if [ -z "$1" ]
 then
-    echo "GitHub repo names required as args"
-    exit 1
+    echo "Using default repos"
+    REPOS="steveww/gitops steveww/podinfo-deploy"
+else
+    REPOS="$*"
 fi
 
 clear
-for REPO in $*
+for REPO in $REPOS
 do
     echo "$REPO"
 done
