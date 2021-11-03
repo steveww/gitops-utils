@@ -10,3 +10,11 @@ kind create cluster \
     --name "$1" \
     --config kind-config.yaml
 
+sleep 3
+/bin/echo -n "Deploy metrics server? <y/n> "
+read ANS
+if [ "$ANS" = "y" ]
+then
+    kubectl apply -f metrics-server.yaml
+fi
+
