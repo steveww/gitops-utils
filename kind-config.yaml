@@ -2,4 +2,17 @@ kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 networking:
   apiServerPort: 6443
-
+nodes:
+- role: control-plane
+  extraMounts:
+  - hostPath: /var/run/docker.sock
+    containerPath: /var/run/docker.sock
+  extraPortMappings:
+  - containerPort: 30080
+    hostPort: 30080
+    listenAddress: "127.0.0.1"
+    protocol: tcp
+  - containerPort: 31490
+    hostPort: 31490
+    listenAddress: "127.0.0.1"
+    protocol: tcp
