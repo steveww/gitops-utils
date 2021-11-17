@@ -11,6 +11,12 @@ then
     exit 1
 fi
 
+if ! which jq
+then
+    echo "jq not installed"
+    exit 1
+fi
+
 unset DOIT
 while getopts 'y' o
 do
