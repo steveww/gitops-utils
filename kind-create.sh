@@ -18,3 +18,5 @@ then
     kubectl apply -f metrics-server.yaml
 fi
 
+watch kubectl get pod -A
+
