@@ -10,9 +10,10 @@ nodes:
   extraPortMappings:
   - containerPort: 30080
     hostPort: 30080
+    # protect UI
     listenAddress: "127.0.0.1"
-    protocol: tcp
+    protocol: TCP
   - containerPort: 31490
     hostPort: 31490
-    listenAddress: "127.0.0.1"
-    protocol: tcp
+    listenAddress: "0.0.0.0"
+    protocol: TCP

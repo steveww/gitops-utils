@@ -36,7 +36,7 @@ clear
 if [ -z "$1" ]
 then
     echo "Using default repos"
-    REPOS="steveww/gitops steveww/podinfo-deploy"
+    REPOS="steveww/gitops steveww/podinfo-deploy steveww/enterprise"
 else
     REPOS="$*"
 fi
