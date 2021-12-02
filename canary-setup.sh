@@ -42,7 +42,7 @@ clear
 echo "Kubernetes context"
 echo "=================="
 echo ""
-kubectx
+kubectl config current-context
 checkOK "Connected to the correct cluster?"
 
 gitops install
